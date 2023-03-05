@@ -1,5 +1,6 @@
 package com.demowebshop.tests;
 
+import com.codeborne.selenide.Configuration;
 import com.demowebshop.pages.MainPage;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.Assertions;
@@ -26,7 +27,7 @@ public class SearchTests extends BaseTest {
             "smartphone"
     })
     @Story("Поиск существующего товара")
-    @DisplayName("Поиск существующего товара: {0}")
+    @DisplayName("Поиск существующего товара")
     @Severity(SeverityLevel.CRITICAL)
     public void checkSearchResultsTest(String request) {
 
@@ -43,7 +44,7 @@ public class SearchTests extends BaseTest {
             });
 
             List<String> fullResults = mainPage.goSearch().getSearchResults();
-
+            System.out.println("BASE URL: " + Configuration.baseUrl);
             step("Результаты поиска в выпадающем списке и на странице результатов идентичны", () -> {
                 Assertions.assertEquals(dropResults, fullResults);
             });

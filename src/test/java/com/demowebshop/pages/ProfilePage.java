@@ -27,11 +27,6 @@ public class ProfilePage {
         return this;
     }
 
-    public int getWishQuantity() {
-
-        return headerComponent.getWishQuantity();
-    }
-
     public String getProfileName() {
 
         return headerComponent.getUserName();

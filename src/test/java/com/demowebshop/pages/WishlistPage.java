@@ -1,5 +1,6 @@
 package com.demowebshop.pages;
 
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.ElementsCollection;
 
 import java.util.List;
@@ -14,7 +15,7 @@ public class WishlistPage {
     public Boolean isProductInWishlist(String href) {
 
         List<String> hrefs = productList.stream()
-                .map(x -> x.getAttribute("href").replace("https://demowebshop.tricentis.com", ""))
+                .map(x -> x.getAttribute("href").replace(Configuration.baseUrl, ""))
                 .collect(Collectors.toList());
         return hrefs.contains(href);
     }
