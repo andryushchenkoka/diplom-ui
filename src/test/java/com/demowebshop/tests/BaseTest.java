@@ -1,10 +1,7 @@
 package com.demowebshop.tests;
 
 import com.codeborne.selenide.logevents.SelenideLogger;
-import com.demowebshop.config.AuthCookies;
-import com.demowebshop.config.EndpointConfig;
-import com.demowebshop.config.ProjectConfiguration;
-import com.demowebshop.config.WebConfig;
+import com.demowebshop.config.*;
 import com.demowebshop.helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.aeonbits.owner.ConfigFactory;
@@ -24,6 +21,7 @@ public class BaseTest {
     protected static EndpointConfig endpointConfig;
     protected static WebConfig config;
     protected static ProjectConfiguration projectConfig;
+    protected static UserProfileConfig userProfileConfig;
 
     @BeforeAll
     public static void beforeAll() {
@@ -31,6 +29,7 @@ public class BaseTest {
         authCookies = ConfigFactory.create(AuthCookies.class);
         endpointConfig = ConfigFactory.create(EndpointConfig.class);
         config = ConfigFactory.create(WebConfig.class, System.getProperties());
+        userProfileConfig = ConfigFactory.create(UserProfileConfig.class);
         projectConfig = new ProjectConfiguration();
         projectConfig.setupConfig(config);
     }
