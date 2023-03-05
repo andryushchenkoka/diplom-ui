@@ -1,9 +1,10 @@
 package com.demowebshop.tests;
 
-import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import com.demowebshop.config.AuthCookies;
 import com.demowebshop.config.EndpointConfig;
+import com.demowebshop.config.ProjectConfiguration;
+import com.demowebshop.config.WebConfig;
 import com.demowebshop.helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.aeonbits.owner.ConfigFactory;
@@ -21,17 +22,17 @@ public class BaseTest {
 
     protected static AuthCookies authCookies;
     protected static EndpointConfig endpointConfig;
+    protected static WebConfig config;
+    protected static ProjectConfiguration projectConfig;
 
     @BeforeAll
     public static void beforeAll() {
 
-        Configuration.baseUrl = "https://demowebshop.tricentis.com";
-        Configuration.browser = "chrome";
-        Configuration.browserSize = "1920x1080";
-        Configuration.timeout = 20000;
-
         authCookies = ConfigFactory.create(AuthCookies.class);
         endpointConfig = ConfigFactory.create(EndpointConfig.class);
+        config = ConfigFactory.create(WebConfig.class, System.getProperties());
+        projectConfig = new ProjectConfiguration();
+        projectConfig.setupConfig(config);
     }
 
     @BeforeEach
