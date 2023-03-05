@@ -3,6 +3,7 @@ package com.demowebshop.pages.components;
 import com.codeborne.selenide.SelenideElement;
 import com.demowebshop.pages.LoginPage;
 import com.demowebshop.pages.MainPage;
+import com.demowebshop.pages.WishlistPage;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
@@ -12,12 +13,12 @@ public class Header {
     private final SelenideElement wishlistQuantity = $("span.wishlist-qty"),
             headerButtons = $(".header-links-wrapper");
 
-    private final SelenideElement registerButton = headerButtons.$(".ico-register"),
-            loginButton = headerButtons.$(".ico-login"),
-            logoutButton = headerButtons.$(".ico-logout"),
-            usernameButton = headerButtons.$(".account"),
-            cartButton = headerButtons.$(".ico-cart"),
-            wishlistButton = headerButtons.$(".ico-wishlist");
+    private final SelenideElement registerButton = headerButtons.$(".header-links-wrapper .ico-register"),
+            loginButton = $(".header-links-wrapper .ico-login"),
+            logoutButton = $(".header-links-wrapper .ico-logout"),
+            usernameButton = $(".header-links-wrapper .account"),
+            cartButton = $(".header-links-wrapper .ico-cart"),
+            wishlistButton = $(".header-links-wrapper .ico-wishlist");
 
     public int getWishQuantity() {
         String strQuantity = wishlistQuantity.getText().replaceAll("\\D", "");
@@ -39,6 +40,12 @@ public class Header {
 
         logoutButton.click();
         return new MainPage();
+    }
+
+    public WishlistPage openWishlist() {
+
+        wishlistButton.click();
+        return new WishlistPage();
     }
 
     public MainPage checkLoggedHeader() {

@@ -3,6 +3,7 @@ package com.demowebshop.tests;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import com.demowebshop.config.AuthCookies;
+import com.demowebshop.config.EndpointConfig;
 import com.demowebshop.helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.aeonbits.owner.ConfigFactory;
@@ -19,6 +20,7 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 public class BaseTest {
 
     protected static AuthCookies authCookies;
+    protected static EndpointConfig endpointConfig;
 
     @BeforeAll
     public static void beforeAll() {
@@ -29,6 +31,7 @@ public class BaseTest {
         Configuration.timeout = 20000;
 
         authCookies = ConfigFactory.create(AuthCookies.class);
+        endpointConfig = ConfigFactory.create(EndpointConfig.class);
     }
 
     @BeforeEach
