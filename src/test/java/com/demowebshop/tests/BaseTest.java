@@ -1,9 +1,11 @@
-package com.tricentis.demowebshop.tests;
+package com.demowebshop.tests;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
-import com.tricentis.demowebshop.helpers.Attach;
+import com.demowebshop.config.AuthCookies;
+import com.demowebshop.helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
+import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,6 +18,8 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class BaseTest {
 
+    protected static AuthCookies authCookies;
+
     @BeforeAll
     public static void beforeAll() {
 
@@ -23,6 +27,8 @@ public class BaseTest {
         Configuration.browser = "chrome";
         Configuration.browserSize = "1920x1080";
         Configuration.timeout = 20000;
+
+        authCookies = ConfigFactory.create(AuthCookies.class);
     }
 
     @BeforeEach

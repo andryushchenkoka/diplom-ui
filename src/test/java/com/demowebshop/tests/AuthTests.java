@@ -1,20 +1,55 @@
-package com.tricentis.demowebshop.tests;
+package com.demowebshop.tests;
 
-import com.tricentis.demowebshop.pages.LoginPage;
-import com.tricentis.demowebshop.pages.MainPage;
+import com.demowebshop.pages.LoginPage;
+import com.demowebshop.pages.MainPage;
+import com.demowebshop.pages.ProfilePage;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Story;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static io.qameta.allure.Allure.step;
 
+@Tag("UI")
+@Epic("Web")
+@Feature("Авторизация")
+@Owner("andryushchenkoka")
 public class AuthTests extends BaseTest {
 
     MainPage mainPage = new MainPage();
     LoginPage loginPage = new LoginPage();
+    ProfilePage profilePage = new ProfilePage();
 
     @Test
-    @DisplayName("Авторизация пользователя с помощью пароля")
+    @Story("Вход в систему")
+    @DisplayName("Логин с помощью cookies")
+    public void loginByCookies() {
+
+        step("Авторизация с использованием cookies", () -> {
+
+            step("Открыть страницу профиля", () -> {
+                profilePage.openPage();
+            });
+
+            step("Загрузить cookie авторизации", () -> {
+                profilePage
+                        .setCookie(authCookies.nopcommerceAuth())
+                        .refreshPage();
+            });
+
+            step("Проверить логин авторизованного пользователя", () -> {
+                Assertions.assertEquals("", profilePage.getProfileName());
+            });
+        });
+    }
+
+    @Test
+    @Story("Вход в систему")
+    @DisplayName("Логин с помощью пароля")
     public void loginByPassword() {
 
         step("Открыть страницу авторизации", () -> {
@@ -32,6 +67,7 @@ public class AuthTests extends BaseTest {
     }
 
     @Test
+    @Story("Вход в систему")
     @DisplayName("Проверить редирект на страницу авторизации из хедера")
     public void checkRedirectMainToLogin() {
 

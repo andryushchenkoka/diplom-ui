@@ -1,4 +1,4 @@
-package com.tricentis.demowebshop.pages;
+package com.demowebshop.pages;
 
 import com.codeborne.selenide.SelenideElement;
 

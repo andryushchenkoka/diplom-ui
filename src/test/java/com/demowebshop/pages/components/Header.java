@@ -1,8 +1,8 @@
-package com.tricentis.demowebshop.pages.components;
+package com.demowebshop.pages.components;
 
 import com.codeborne.selenide.SelenideElement;
-import com.tricentis.demowebshop.pages.LoginPage;
-import com.tricentis.demowebshop.pages.MainPage;
+import com.demowebshop.pages.LoginPage;
+import com.demowebshop.pages.MainPage;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;

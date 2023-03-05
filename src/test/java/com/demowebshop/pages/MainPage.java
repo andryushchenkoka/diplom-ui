@@ -1,6 +1,6 @@
-package com.tricentis.demowebshop.pages;
+package com.demowebshop.pages;
 
-import com.tricentis.demowebshop.pages.components.Header;
+import com.demowebshop.pages.components.Header;
 
 import static com.codeborne.selenide.Selenide.open;
 
