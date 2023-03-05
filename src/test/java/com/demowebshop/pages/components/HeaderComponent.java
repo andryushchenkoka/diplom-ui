@@ -12,7 +12,7 @@ import java.util.List;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
-public class Header {
+public class HeaderComponent {
 
     private final SelenideElement wishlistQuantity = $("span.wishlist-qty"),
             headerButtons = $(".header-links-wrapper"),

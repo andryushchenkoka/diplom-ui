@@ -2,7 +2,7 @@ package com.demowebshop.tests;
 
 import com.demowebshop.pages.ProductPage;
 import com.demowebshop.pages.WishlistPage;
-import com.demowebshop.pages.components.Header;
+import com.demowebshop.pages.components.HeaderComponent;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -24,7 +24,7 @@ public class WishlistTests extends BaseTest {
 
     ProductPage productPage = new ProductPage();
     WishlistPage wishlistPage = new WishlistPage();
-    Header header = new Header();
+    HeaderComponent headerComponent = new HeaderComponent();
 
     @ParameterizedTest
     @ValueSource(strings = {
@@ -48,17 +48,17 @@ public class WishlistTests extends BaseTest {
 
             int wishCountOld, wishCountActual;
 
-            wishCountOld = header.getWishQuantity();
+            wishCountOld = headerComponent.getWishQuantity();
 
             step("Добавить товар в список желаний", () -> {
                 productPage.addToWishlist();
             });
 
             step("Перейти на страницу списка желаний", () -> {
-                header.openWishlist();
+                headerComponent.openWishlist();
             });
 
-            wishCountActual = header.getWishQuantity();
+            wishCountActual = headerComponent.getWishQuantity();
 
             step("Проверить, что продукт добавлен в список желаний", () -> {
                 Assertions.assertTrue(wishlistPage.isProductInWishlist(productUrl));
@@ -106,10 +106,10 @@ public class WishlistTests extends BaseTest {
             int wishCountOld, wishCountActual, currentCount;
 
             step("Перейти на страницу списка желаний", () -> {
-                header.openWishlist();
+                headerComponent.openWishlist();
             });
 
-            wishCountOld = header.getWishQuantity();
+            wishCountOld = headerComponent.getWishQuantity();
 
             step("Отметить чекбокс у выбранного товара", () -> {
                 wishlistPage.selectProduct(productUrl);
@@ -121,7 +121,7 @@ public class WishlistTests extends BaseTest {
                 wishlistPage.updateWishlist();
             });
 
-            wishCountActual = header.getWishQuantity();
+            wishCountActual = headerComponent.getWishQuantity();
 
             step("Проверить, что продукт удален из списка желаний", () -> {
                 Assertions.assertFalse(wishlistPage.isProductInWishlist(productUrl));

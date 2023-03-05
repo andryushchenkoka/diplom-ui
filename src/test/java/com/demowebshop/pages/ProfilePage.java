@@ -1,6 +1,6 @@
 package com.demowebshop.pages;
 
-import com.demowebshop.pages.components.Header;
+import com.demowebshop.pages.components.HeaderComponent;
 import com.demowebshop.helpers.Cookies;
 
 import static com.codeborne.selenide.Selenide.open;
@@ -8,7 +8,7 @@ import static com.codeborne.selenide.Selenide.refresh;
 
 public class ProfilePage {
 
-    Header header = new Header();
+    HeaderComponent headerComponent = new HeaderComponent();
 
     public ProfilePage openPage() {
         open("/customer/info");
@@ -29,16 +29,16 @@ public class ProfilePage {
 
     public int getWishQuantity() {
 
-        return header.getWishQuantity();
+        return headerComponent.getWishQuantity();
     }
 
     public String getProfileName() {
 
-        return header.getUserName();
+        return headerComponent.getUserName();
     }
 
     public void exitProfile() {
 
-        header.exitProfile();
+        headerComponent.exitProfile();
     }
 }
