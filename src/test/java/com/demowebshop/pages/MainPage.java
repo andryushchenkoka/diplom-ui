@@ -1,10 +1,8 @@
 package com.demowebshop.pages;
 
 import com.demowebshop.pages.components.Header;
-import com.sun.tools.javac.Main;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static com.codeborne.selenide.Selenide.open;
 
