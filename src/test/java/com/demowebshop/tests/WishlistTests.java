@@ -8,11 +8,10 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Owner;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static com.demowebshop.helpers.Cookies.getCookieName;
 import static com.demowebshop.helpers.Cookies.getCookieValue;
@@ -29,12 +28,13 @@ public class WishlistTests extends BaseTest {
     WishlistPage wishlistPage = new WishlistPage();
     Header header = new Header();
 
-    @Test
+    @ParameterizedTest(name = "Добавление товара в список желаний")
+    @ValueSource(strings = {
+            "/50s-rockabilly-polka-dot-top-jr-plus-size",
+            "/health"
+    })
     @Story("Добавление товара")
-    @DisplayName("Добавление товара в список желаний")
-    public void addToWishlistTest() {
-
-        String productUrl = "/black-white-diamond-heart";
+    public void addToWishlistTest(String productUrl) {
 
         step("Открыть страницу продукта с авторизованным профилем", () -> {
 
