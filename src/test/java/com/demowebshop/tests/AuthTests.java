@@ -3,10 +3,7 @@ package com.demowebshop.tests;
 import com.demowebshop.pages.LoginPage;
 import com.demowebshop.pages.MainPage;
 import com.demowebshop.pages.ProfilePage;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Feature;
-import io.qameta.allure.Owner;
-import io.qameta.allure.Story;
+import io.qameta.allure.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -27,6 +24,7 @@ public class AuthTests extends BaseTest {
     @Test
     @Story("Вход в систему")
     @DisplayName("Логин с помощью cookies")
+    @Severity(SeverityLevel.NORMAL)
     public void loginByCookiesTest() {
 
         step("Авторизация с использованием cookies", () -> {
@@ -50,6 +48,7 @@ public class AuthTests extends BaseTest {
     @Test
     @Story("Вход в систему")
     @DisplayName("Логин с помощью пароля")
+    @Severity(SeverityLevel.CRITICAL)
     public void loginByPasswordTest() {
 
         step("Открыть страницу авторизации", () -> {
@@ -69,6 +68,7 @@ public class AuthTests extends BaseTest {
     @Test
     @Story("Вход в систему")
     @DisplayName("Проверить редирект на страницу авторизации из хедера")
+    @Severity(SeverityLevel.CRITICAL)
     public void checkRedirectMainToLoginTest() {
 
         step("Открыть главную страницу", () -> {
@@ -87,6 +87,7 @@ public class AuthTests extends BaseTest {
     @Test
     @Story("Выход из профиля")
     @DisplayName("Выйти из профиля через хедер")
+    @Severity(SeverityLevel.NORMAL)
     public void logoutTest() {
 
         step("Зайти в профиль авторизованного пользователя", () -> {

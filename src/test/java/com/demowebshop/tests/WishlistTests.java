@@ -3,10 +3,7 @@ package com.demowebshop.tests;
 import com.demowebshop.pages.ProductPage;
 import com.demowebshop.pages.WishlistPage;
 import com.demowebshop.pages.components.Header;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Feature;
-import io.qameta.allure.Owner;
-import io.qameta.allure.Story;
+import io.qameta.allure.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -34,6 +31,7 @@ public class WishlistTests extends BaseTest {
             "/health"
     })
     @Story("Добавление товара")
+    @Severity(SeverityLevel.NORMAL)
     public void addToWishlistTest(String productUrl) {
 
         step("Открыть страницу продукта с авторизованным профилем", () -> {
@@ -73,6 +71,7 @@ public class WishlistTests extends BaseTest {
     @ParameterizedTest(name = "Удаление товара из списка желаний")
     @CsvFileSource(resources = "/data/remove_products.csv")
     @Story("Удаление товара")
+    @Severity(SeverityLevel.NORMAL)
     public void removeFromWishlist(String productUrl, String productId) {
 
         step("Добавить продукт в список желаний (API запрос)", () -> {

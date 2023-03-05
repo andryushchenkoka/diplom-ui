@@ -1,10 +1,7 @@
 package com.demowebshop.tests;
 
 import com.demowebshop.pages.MainPage;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Feature;
-import io.qameta.allure.Owner;
-import io.qameta.allure.Story;
+import io.qameta.allure.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -28,6 +25,7 @@ public class SearchTests extends BaseTest {
             "smartphone"
     })
     @Story("Поиск существующего товара")
+    @Severity(SeverityLevel.CRITICAL)
     public void checkSearchResultsTest(String request) {
 
         step("Поиск существующего товара", () -> {
