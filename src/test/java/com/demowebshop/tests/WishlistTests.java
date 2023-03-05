@@ -5,6 +5,7 @@ import com.demowebshop.pages.WishlistPage;
 import com.demowebshop.pages.components.Header;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
@@ -25,12 +26,13 @@ public class WishlistTests extends BaseTest {
     WishlistPage wishlistPage = new WishlistPage();
     Header header = new Header();
 
-    @ParameterizedTest(name = "Добавление товара в список желаний")
+    @ParameterizedTest
     @ValueSource(strings = {
             "/50s-rockabilly-polka-dot-top-jr-plus-size",
             "/health"
     })
     @Story("Добавление товара")
+    @DisplayName("Добавление товара в список желаний")
     @Severity(SeverityLevel.NORMAL)
     public void addToWishlistTest(String productUrl) {
 
@@ -68,9 +70,10 @@ public class WishlistTests extends BaseTest {
         });
     }
 
-    @ParameterizedTest(name = "Удаление товара из списка желаний")
+    @ParameterizedTest
     @CsvFileSource(resources = "/data/remove_products.csv")
     @Story("Удаление товара")
+    @DisplayName("Удаление товара из списка желаний")
     @Severity(SeverityLevel.NORMAL)
     public void removeFromWishlist(String productUrl, String productId) {
 

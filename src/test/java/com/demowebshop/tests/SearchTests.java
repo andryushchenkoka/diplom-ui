@@ -3,6 +3,7 @@ package com.demowebshop.tests;
 import com.demowebshop.pages.MainPage;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -19,12 +20,13 @@ public class SearchTests extends BaseTest {
 
     MainPage mainPage = new MainPage();
 
-    @ParameterizedTest(name = "Поиск существующего товара: {0}")
+    @ParameterizedTest
     @ValueSource(strings = {
             "computer",
             "smartphone"
     })
     @Story("Поиск существующего товара")
+    @DisplayName("Поиск существующего товара: {0}")
     @Severity(SeverityLevel.CRITICAL)
     public void checkSearchResultsTest(String request) {
 
