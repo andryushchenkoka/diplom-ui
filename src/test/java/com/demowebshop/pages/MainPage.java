@@ -8,7 +8,6 @@ public class MainPage {
 
     Header header = new Header();
 
-
     public MainPage openPage() {
 
         open("/");
@@ -28,5 +27,10 @@ public class MainPage {
     public MainPage checkLoggedHeader() {
 
         return header.checkLoggedHeader();
+    }
+
+    public MainPage checkUnloggedHeader() {
+
+        return header.checkUnloggedHeader();
     }
 }

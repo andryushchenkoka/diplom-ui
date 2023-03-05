@@ -12,7 +12,8 @@ public class Header {
     private final SelenideElement wishlistQuantity = $("span.wishlist-qty"),
             headerButtons = $(".header-links-wrapper");
 
-    private final SelenideElement loginButton = headerButtons.$(".ico-login"),
+    private final SelenideElement registerButton = headerButtons.$(".ico-register"),
+            loginButton = headerButtons.$(".ico-login"),
             logoutButton = headerButtons.$(".ico-logout"),
             usernameButton = headerButtons.$(".account"),
             cartButton = headerButtons.$(".ico-cart"),
@@ -34,11 +35,30 @@ public class Header {
         return new LoginPage();
     }
 
+    public MainPage exitProfile() {
+
+        logoutButton.click();
+        return new MainPage();
+    }
+
     public MainPage checkLoggedHeader() {
 
         loginButton.shouldNot(visible);
+
         usernameButton.shouldBe(visible);
         logoutButton.shouldBe(visible);
+        cartButton.shouldBe(visible);
+        wishlistButton.shouldBe(visible);
+        return new MainPage();
+    }
+
+    public MainPage checkUnloggedHeader() {
+
+        usernameButton.shouldNot(visible);
+        logoutButton.shouldNot(visible);
+
+        registerButton.shouldBe(visible);
+        loginButton.shouldBe(visible);
         cartButton.shouldBe(visible);
         wishlistButton.shouldBe(visible);
         return new MainPage();

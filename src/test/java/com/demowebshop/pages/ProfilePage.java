@@ -36,4 +36,9 @@ public class ProfilePage {
 
         return header.getUserName();
     }
+
+    public void exitProfile() {
+
+        header.exitProfile();
+    }
 }

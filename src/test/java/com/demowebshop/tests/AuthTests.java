@@ -27,7 +27,7 @@ public class AuthTests extends BaseTest {
     @Test
     @Story("Вход в систему")
     @DisplayName("Логин с помощью cookies")
-    public void loginByCookies() {
+    public void loginByCookiesTest() {
 
         step("Авторизация с использованием cookies", () -> {
 
@@ -50,7 +50,7 @@ public class AuthTests extends BaseTest {
     @Test
     @Story("Вход в систему")
     @DisplayName("Логин с помощью пароля")
-    public void loginByPassword() {
+    public void loginByPasswordTest() {
 
         step("Открыть страницу авторизации", () -> {
             loginPage.openPage();
@@ -69,7 +69,7 @@ public class AuthTests extends BaseTest {
     @Test
     @Story("Вход в систему")
     @DisplayName("Проверить редирект на страницу авторизации из хедера")
-    public void checkRedirectMainToLogin() {
+    public void checkRedirectMainToLoginTest() {
 
         step("Открыть главную страницу", () -> {
             mainPage.openPage();
@@ -81,6 +81,27 @@ public class AuthTests extends BaseTest {
 
         step("На странице присутствует форма авторизации", () -> {
             loginPage.checkLoginForm();
+        });
+    }
+
+    @Test
+    @Story("Выход из профиля")
+    @DisplayName("Выйти из профиля через хедер")
+    public void logoutTest() {
+
+        step("Зайти в профиль авторизованного пользователя", () -> {
+            profilePage
+                    .openPage()
+                    .setCookie(authCookies.nopcommerceAuth())
+                    .refreshPage();
+        });
+
+        step("Нажать в хедере кнопку выхода", () -> {
+            profilePage.exitProfile();
+        });
+
+        step("Проверить меню в хедере", () -> {
+            mainPage.checkUnloggedHeader();
         });
     }
 }
