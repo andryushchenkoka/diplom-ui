@@ -59,12 +59,14 @@ tasks.withType(Test) {
     systemProperties(System.getProperties())
     useJUnitPlatform()
 
-    def threadsCount = Integer.parseInt(System.getProperty('threads', '1'))
-    if (threadsCount > 1) {
-        systemProperty 'junit.jupiter.execution.parallel.enabled', 'true'
-        systemProperty 'junit.jupiter.execution.parallel.mode.default', 'concurrent'
-        systemProperty 'junit.jupiter.execution.parallel.config.strategy', 'fixed'
-        systemProperty 'junit.jupiter.execution.parallel.config.fixed.parallelism', threadsCount
+    if (System.getProperty("threads") != null && Integer.parseInt(System.getProperty("threads")) > 1) {
+        systemProperties += [
+                'junit.jupiter.execution.parallel.enabled'             : true,
+                'junit.jupiter.execution.parallel.mode.default'        : 'concurrent',
+                'junit.jupiter.execution.parallel.mode.classes.default': 'concurrent',
+                'junit.jupiter.execution.parallel.config.strategy'     : 'custom',
+                'junit.jupiter.execution.parallel.config.custom.class' : 'helpers.CustomThreadsStrategy'
+        ]
     }
 
     testLogging {
