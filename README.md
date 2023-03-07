@@ -78,7 +78,7 @@
 Для запуска сборки необходимо перейти в раздел <code><strong>*Собрать с параметрами*</strong></code> и нажать кнопку <code><strong>*Собрать*</strong></code>.
 
 <p align="center">
-  <img src="media/screen/start_jenkins.png" alt="Jenkins" width="800">
+  <img src="media/screen/jenkins_job_launch_ui.png" alt="Jenkins" width="800">
 </p>
 
 После выполнения сборки, в блоке <code><strong>*История сборок*</strong></code> напротив номера сборки появится
@@ -87,11 +87,11 @@
 ## <img width="4%" title="Allure Report" src="media/icons/allure-Report-logo.svg"> Отчет о результатах тестирования в [Allure Report](https://jenkins.autotests.cloud/job/aka-diplom-ui/11/allure/)
 
 <p align="center">
-  <img src="media/screen/jenkins_overview.png" alt="allure-report" width="900">
+  <img src="media/screen/allure_dashboard_ui.png" alt="allure-report" width="900">
 </p>
 
 <p align="center">
-  <img src="media/screen/jenkins_behaviors.png" alt="allure-report_1" width="900">
+  <img src="media/screen/allure_behaviors_ui.png" alt="allure-report_1" width="900">
 </p>
 
 ## <img width="4%" title="Allure TestOPS" src="media/icons/allure-ee-logo.svg"> Интеграция с [Allure TestOps](https://allure.autotests.cloud/launch/20163)
@@ -99,31 +99,31 @@
 ### Основной дашборд
 
 <p align="center">
-  <img src="media/screen/dashboards.png" alt="dashboard" width="900">
+  <img src="media/screen/testops_dashboard_ui.png" alt="dashboard" width="900">
 </p>
 
 ### Список тестов с результатами прогона
 
 <p align="center">
-  <img src="media/screen/allure-testops-results.png" alt="dashboard" width="900">
+  <img src="media/screen/testops_tree_ui.png" alt="dashboard" width="900">
 </p>
 
 ### Тест-кейсы
 
 <p align="center">
-  <img src="media/screen/allure-testops-testcases.png" alt="testcase" width="900">
+  <img src="media/screen/testops_cases_ui.png" alt="testcase" width="900">
 </p>
 
 ## <img width="4%" title="Telegram" src="media/icons/Telegram.svg"> Уведомления в Telegram
 После завершения сборки специальный бот, созданный в <code>Telegram</code>, автоматически обрабатывает и отправляет сообщение с отчетом о прогоне тестов.
 
 <p align="center">
-<img title="Telegram Notifications" src="media/screen/notifications.png">
+<img title="Telegram Notifications" src="media/screen/allure_notif_ui.png">
 
 ## :movie_camera: Видео с прогоном тестов
 
 В отчетах Allure для каждого теста прикреплен не только скриншот, но и видео прохождения теста
 
 <p align="center">
-  <img title="Video" src="media/video/Lamoda_tests.gif">
+  <img title="Video" src="media/video/video.gif">
 </p>
