@@ -12,12 +12,14 @@ public class ProjectConfiguration {
         browser = config.getBrowserName();
         browserVersion = config.getBrowserVersion();
         browserSize = config.getBrowserSize();
-        //remote = config.getRemoteUrl();
         browserPosition = "0x0";
         timeout = config.getTimeout();
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("enableVNC", true);
-        capabilities.setCapability("enableVideo", true);
-        browserCapabilities = capabilities;
+        if (System.getProperty("env").equals("remote")) {
+            remote = config.getRemoteUrl();
+            DesiredCapabilities capabilities = new DesiredCapabilities();
+            capabilities.setCapability("enableVNC", true);
+            capabilities.setCapability("enableVideo", true);
+            browserCapabilities = capabilities;
+        }
     }
 }
