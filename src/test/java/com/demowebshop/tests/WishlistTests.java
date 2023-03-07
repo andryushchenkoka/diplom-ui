@@ -28,7 +28,7 @@ public class WishlistTests extends BaseTest {
 
     @ParameterizedTest
     @ValueSource(strings = {
-            "/50s-rockabilly-polka-dot-top-jr-plus-size",
+            "/50s-rockabilly-polka-d0t-top-jr-plus-size",
             "/health"
     })
     @Story("Добавление товара")

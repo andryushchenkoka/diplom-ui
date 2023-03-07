@@ -24,7 +24,7 @@ public class SearchTests extends BaseTest {
     @ParameterizedTest
     @ValueSource(strings = {
             "computer",
-            "smartphone"
+            "iphone"
     })
     @Story("Поиск существующего товара")
     @DisplayName("Поиск существующего товара")
