@@ -83,7 +83,6 @@ public class WishlistTests extends BaseTest {
                     .contentType("application/x-www-form-urlencoded")
                     .cookie(getCookieName(authCookies.nopcommerceAuth()), getCookieValue(authCookies.nopcommerceAuth()))
                     .param("addtocart_" + productId + ".EnteredQuantity", 2)
-                    //.body("addtocart_" + productId + ".EnteredQuantity:2")
                     .when()
                     .post(endpointConfig.getBaseUrl()
                             + endpointConfig.getAddWishlistPath()
