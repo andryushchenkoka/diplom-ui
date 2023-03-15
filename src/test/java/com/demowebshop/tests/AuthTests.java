@@ -32,12 +32,12 @@ public class AuthTests extends BaseTest {
 
             step("Загрузить cookie авторизации", () -> {
                 profilePage
-                        .setCookie(authCookies.nopcommerceAuth())
+                        .setCookie(AUTH_COOKIES.nopcommerceAuth())
                         .refreshPage();
             });
 
             step("Проверить логин авторизованного пользователя", () -> {
-                Assertions.assertEquals(userProfileConfig.getUserLogin(), profilePage.getProfileName());
+                Assertions.assertEquals(USER_PROFILE_CONFIG.getUserLogin(), profilePage.getProfileName());
             });
         });
     }
@@ -53,12 +53,12 @@ public class AuthTests extends BaseTest {
         });
 
         step("Авторизоваться по паролю", () -> {
-            loginPage.loginByPassword(userProfileConfig.getUserLogin(), userProfileConfig.getUserPassword());
+            loginPage.loginByPassword(USER_PROFILE_CONFIG.getUserLogin(), USER_PROFILE_CONFIG.getUserPassword());
         });
 
         step("Проверить наличие пользовательского меню в хедере", () -> {
             mainPage.checkLoggedHeader();
-            Assertions.assertEquals(userProfileConfig.getUserLogin(), mainPage.getUserName());
+            Assertions.assertEquals(USER_PROFILE_CONFIG.getUserLogin(), mainPage.getUserName());
         });
     }
 
@@ -90,7 +90,7 @@ public class AuthTests extends BaseTest {
         step("Зайти в профиль авторизованного пользователя", () -> {
             profilePage
                     .openPage()
-                    .setCookie(authCookies.nopcommerceAuth())
+                    .setCookie(AUTH_COOKIES.nopcommerceAuth())
                     .refreshPage();
         });
 

@@ -17,21 +17,16 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class BaseTest {
 
-    protected static AuthCookies authCookies;
-    protected static EndpointConfig endpointConfig;
-    protected static WebConfig config;
-    protected static ProjectConfiguration projectConfig;
-    protected static UserProfileConfig userProfileConfig;
+    protected final static AuthCookies AUTH_COOKIES = ConfigFactory.create(AuthCookies.class);
+    protected final static EndpointConfig ENDPOINT_CONFIG = ConfigFactory.create(EndpointConfig.class);
+    protected final static WebConfig CONFIG = ConfigFactory.create(WebConfig.class, System.getProperties());
+    protected final static ProjectConfiguration PROJECT_CONFIGURATION = new ProjectConfiguration();
+    protected final static UserProfileConfig USER_PROFILE_CONFIG = ConfigFactory.create(UserProfileConfig.class);
 
     @BeforeAll
     public static void beforeAll() {
 
-        authCookies = ConfigFactory.create(AuthCookies.class);
-        endpointConfig = ConfigFactory.create(EndpointConfig.class);
-        config = ConfigFactory.create(WebConfig.class, System.getProperties());
-        userProfileConfig = ConfigFactory.create(UserProfileConfig.class);
-        projectConfig = new ProjectConfiguration();
-        projectConfig.setupConfig(config);
+        PROJECT_CONFIGURATION.setupConfig(CONFIG);
     }
 
     @BeforeEach

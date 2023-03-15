@@ -40,7 +40,7 @@ public class WishlistTests extends BaseTest {
 
             productPage
                     .openPage(productUrl)
-                    .setCookie(authCookies.nopcommerceAuth())
+                    .setCookie(AUTH_COOKIES.nopcommerceAuth())
                     .refreshPage();
         });
 
@@ -81,13 +81,13 @@ public class WishlistTests extends BaseTest {
 
             given()
                     .contentType("application/x-www-form-urlencoded")
-                    .cookie(getCookieName(authCookies.nopcommerceAuth()), getCookieValue(authCookies.nopcommerceAuth()))
+                    .cookie(getCookieName(AUTH_COOKIES.nopcommerceAuth()), getCookieValue(AUTH_COOKIES.nopcommerceAuth()))
                     .param("addtocart_" + productId + ".EnteredQuantity", 2)
                     .when()
-                    .post(endpointConfig.getBaseUrl()
-                            + endpointConfig.getAddWishlistPath()
+                    .post(ENDPOINT_CONFIG.getBaseUrl()
+                            + ENDPOINT_CONFIG.getAddWishlistPath()
                             + productId
-                            + endpointConfig.getAddWishlistOperation())
+                            + ENDPOINT_CONFIG.getAddWishlistOperation())
                     .then().log().all()
                     .statusCode(200);
         });
@@ -96,7 +96,7 @@ public class WishlistTests extends BaseTest {
 
             productPage
                     .openPage(productUrl)
-                    .setCookie(authCookies.nopcommerceAuth())
+                    .setCookie(AUTH_COOKIES.nopcommerceAuth())
                     .refreshPage();
         });
 
