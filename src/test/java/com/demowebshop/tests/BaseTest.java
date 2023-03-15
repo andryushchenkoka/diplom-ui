@@ -1,5 +1,6 @@
 package com.demowebshop.tests;
 
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import com.demowebshop.config.*;
 import com.demowebshop.helpers.Attach;
@@ -12,8 +13,6 @@ import org.junit.jupiter.api.BeforeEach;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class BaseTest {
 
@@ -46,6 +45,6 @@ public class BaseTest {
         Attach.browserConsoleLogs();
         Attach.addVideo();
 
-        getWebDriver().quit();
+        Selenide.closeWebDriver();
     }
 }
