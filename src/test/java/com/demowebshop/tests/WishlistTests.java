@@ -11,8 +11,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static com.demowebshop.helpers.Cookies.getCookieName;
-import static com.demowebshop.helpers.Cookies.getCookieValue;
+import static com.demowebshop.helpers.CookieHelper.getCookieName;
+import static com.demowebshop.helpers.CookieHelper.getCookieValue;
 import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
 

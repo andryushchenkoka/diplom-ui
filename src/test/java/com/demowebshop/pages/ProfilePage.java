@@ -1,7 +1,7 @@
 package com.demowebshop.pages;
 
 import com.demowebshop.pages.components.HeaderComponent;
-import com.demowebshop.helpers.Cookies;
+import com.demowebshop.helpers.CookieHelper;
 
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.refresh;
@@ -17,7 +17,7 @@ public class ProfilePage {
 
     public ProfilePage setCookie(String cookie) {
 
-        Cookies.setCookie(cookie);
+        CookieHelper.setCookie(cookie);
         return this;
     }
 

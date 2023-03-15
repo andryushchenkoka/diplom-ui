@@ -1,7 +1,7 @@
 package com.demowebshop.pages;
 
 import com.codeborne.selenide.SelenideElement;
-import com.demowebshop.helpers.Cookies;
+import com.demowebshop.helpers.CookieHelper;
 
 import static com.codeborne.selenide.Selenide.*;
 
@@ -23,7 +23,7 @@ public class ProductPage {
 
     public ProductPage setCookie(String cookie) {
 
-        Cookies.setCookie(cookie);
+        CookieHelper.setCookie(cookie);
         return this;
     }
 
