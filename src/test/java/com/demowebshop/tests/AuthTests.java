@@ -63,7 +63,6 @@ public class AuthTests extends BaseTest {
     }
 
     @Test
-    @Disabled
     @Story("Вход в систему")
     @DisplayName("Проверить редирект на страницу авторизации из хедера")
     @Severity(SeverityLevel.CRITICAL)
