@@ -1,5 +1,6 @@
 package com.demowebshop.tests;
 
+import com.demowebshop.helpers.CookieHelper;
 import com.demowebshop.pages.LoginPage;
 import com.demowebshop.pages.MainPage;
 import com.demowebshop.pages.ProfilePage;
@@ -31,9 +32,7 @@ public class AuthTests extends BaseTest {
             });
 
             step("Загрузить cookie авторизации", () -> {
-                profilePage
-                        .setCookie(AUTH_COOKIES.nopcommerceAuth())
-                        .refreshPage();
+                CookieHelper.setCookieAndRefresh(authCookie);
             });
 
             step("Проверить логин авторизованного пользователя", () -> {
@@ -88,10 +87,8 @@ public class AuthTests extends BaseTest {
     public void logoutTest() {
 
         step("Зайти в профиль авторизованного пользователя", () -> {
-            profilePage
-                    .openPage()
-                    .setCookie(AUTH_COOKIES.nopcommerceAuth())
-                    .refreshPage();
+            profilePage.openPage();
+            CookieHelper.setCookieAndRefresh(authCookie);
         });
 
         step("Нажать в хедере кнопку выхода", () -> {

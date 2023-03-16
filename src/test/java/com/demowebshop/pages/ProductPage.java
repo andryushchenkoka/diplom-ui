@@ -1,7 +1,6 @@
 package com.demowebshop.pages;
 
 import com.codeborne.selenide.SelenideElement;
-import com.demowebshop.helpers.CookieHelper;
 
 import static com.codeborne.selenide.Selenide.*;
 
@@ -12,18 +11,6 @@ public class ProductPage {
     public ProductPage openPage(String url) {
 
         open(url);
-        return this;
-    }
-
-    public ProductPage refreshPage() {
-
-        refresh();
-        return this;
-    }
-
-    public ProductPage setCookie(String cookie) {
-
-        CookieHelper.setCookie(cookie);
         return this;
     }
 

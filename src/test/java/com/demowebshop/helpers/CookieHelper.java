@@ -2,23 +2,14 @@ package com.demowebshop.helpers;
 
 import org.openqa.selenium.Cookie;
 
+import static com.codeborne.selenide.Selenide.refresh;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class CookieHelper {
 
-    public static void setCookie(String cookie) {
+    public static void setCookieAndRefresh(Cookie cookie) {
 
-        String[] cookies = cookie.split(",");
-        getWebDriver().manage().addCookie(new Cookie(cookies[0], cookies[1]));
-    }
-
-    public static String getCookieName(String cookie) {
-
-        return cookie.split(",")[0];
-    }
-
-    public static String getCookieValue(String cookie) {
-
-        return cookie.split(",")[1];
+        getWebDriver().manage().addCookie(cookie);
+        refresh();
     }
 }

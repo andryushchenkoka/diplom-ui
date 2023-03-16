@@ -1,5 +1,6 @@
 package com.demowebshop.tests;
 
+import com.demowebshop.helpers.CookieHelper;
 import com.demowebshop.pages.ProductPage;
 import com.demowebshop.pages.WishlistPage;
 import com.demowebshop.pages.components.HeaderComponent;
@@ -11,8 +12,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static com.demowebshop.helpers.CookieHelper.getCookieName;
-import static com.demowebshop.helpers.CookieHelper.getCookieValue;
 import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
 
@@ -38,10 +37,7 @@ public class WishlistTests extends BaseTest {
 
         step("Открыть страницу продукта с авторизованным профилем", () -> {
 
-            productPage
-                    .openPage(productUrl)
-                    .setCookie(AUTH_COOKIES.nopcommerceAuth())
-                    .refreshPage();
+            productPage.openPage(productUrl);
         });
 
         step("Проверка добавления товара в список желаний", () -> {
@@ -81,7 +77,7 @@ public class WishlistTests extends BaseTest {
 
             given()
                     .contentType("application/x-www-form-urlencoded")
-                    .cookie(getCookieName(AUTH_COOKIES.nopcommerceAuth()), getCookieValue(AUTH_COOKIES.nopcommerceAuth()))
+                    .cookie(authCookie.getName(), authCookie.getValue())
                     .param("addtocart_" + productId + ".EnteredQuantity", 2)
                     .when()
                     .post(ENDPOINT_CONFIG.getBaseUrl()
@@ -94,10 +90,8 @@ public class WishlistTests extends BaseTest {
 
         step("Открыть список желаний с авторизованным профилем", () -> {
 
-            productPage
-                    .openPage(productUrl)
-                    .setCookie(AUTH_COOKIES.nopcommerceAuth())
-                    .refreshPage();
+            productPage.openPage(productUrl);
+            CookieHelper.setCookieAndRefresh(authCookie);
         });
 
         step("Проверка удаления товара из списка желаний", () -> {
