@@ -36,7 +36,7 @@ public class AuthTests extends BaseTest {
             });
 
             step("Проверить логин авторизованного пользователя", () -> {
-                Assertions.assertEquals(USER_PROFILE_CONFIG.getUserLogin(), profilePage.getProfileName());
+                profilePage.checkUsername(USER_PROFILE_CONFIG.getUserLogin());
             });
         });
     }
@@ -56,8 +56,8 @@ public class AuthTests extends BaseTest {
         });
 
         step("Проверить наличие пользовательского меню в хедере", () -> {
-            mainPage.checkLoggedHeader();
-            Assertions.assertEquals(USER_PROFILE_CONFIG.getUserLogin(), mainPage.getUserName());
+            mainPage.checkLoggedHeader()
+                    .checkUsername(USER_PROFILE_CONFIG.getUserLogin());
         });
     }
 

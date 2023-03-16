@@ -1,13 +1,10 @@
 package com.demowebshop.pages.components;
 
-import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import com.demowebshop.pages.LoginPage;
 import com.demowebshop.pages.MainPage;
-import com.demowebshop.pages.SearchPage;
 import com.demowebshop.pages.WishlistPage;
-
-import java.util.List;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
@@ -15,9 +12,7 @@ import static com.codeborne.selenide.Selenide.*;
 public class HeaderComponent {
 
     private final SelenideElement wishlistQuantity = $("span.wishlist-qty"),
-            headerButtons = $(".header-links-wrapper"),
-            searchInput = $("input#small-searchterms"),
-            searchButton = $("input[value='Search']");
+            headerButtons = $(".header-links-wrapper");
 
     private final SelenideElement registerButton = headerButtons.$(".header-links-wrapper .ico-register"),
             loginButton = $(".header-links-wrapper .ico-login"),
@@ -26,16 +21,20 @@ public class HeaderComponent {
             cartButton = $(".header-links-wrapper .ico-cart"),
             wishlistButton = $(".header-links-wrapper .ico-wishlist");
 
-    private final ElementsCollection searchResults = $$("[role=presentation] a");
-
     public int getWishQuantity() {
+        sleep(3000);
         String strQuantity = wishlistQuantity.getText().replaceAll("\\D", "");
         return Integer.parseInt(strQuantity);
     }
 
-    public String getUserName() {
+    public SelenideElement getWishesQuantity() {
 
-        return usernameButton.getText();
+        return wishlistQuantity;
+    }
+
+    public void checkUsername(String username) {
+
+        usernameButton.shouldHave(Condition.text(username));
     }
 
     public LoginPage openLoginForm() {
@@ -54,27 +53,6 @@ public class HeaderComponent {
 
         wishlistButton.click();
         return new WishlistPage();
-    }
-
-    public List<String> getSearchDropResults(String request) {
-
-        searchInput.setValue(request);
-        sleep(3000);
-        return searchResults.texts();
-    }
-
-    public Boolean areAllItemsContains(String request, List<String> list) {
-
-        for (String item : list)
-            if (!item.toLowerCase().contains(request))
-                return false;
-        return true;
-    }
-
-    public SearchPage goSearch() {
-
-        searchButton.click();
-        return new SearchPage();
     }
 
     public MainPage checkLoggedHeader() {

@@ -2,8 +2,6 @@ package com.demowebshop.pages;
 
 import com.demowebshop.pages.components.HeaderComponent;
 
-import java.util.List;
-
 import static com.codeborne.selenide.Selenide.open;
 
 public class MainPage {
@@ -16,9 +14,9 @@ public class MainPage {
         return this;
     }
 
-    public String getUserName() {
+    public void checkUsername(String username) {
 
-        return headerComponent.getUserName();
+        headerComponent.checkUsername(username);
     }
 
     public LoginPage openLoginForm() {
@@ -34,20 +32,5 @@ public class MainPage {
     public MainPage checkUnloggedHeader() {
 
         return headerComponent.checkUnloggedHeader();
-    }
-
-    public List<String> getSearchDropResults(String request) {
-
-        return headerComponent.getSearchDropResults(request);
-    }
-
-    public Boolean areAllItemsContains(String request, List<String> list) {
-
-        return headerComponent.areAllItemsContains(request, list);
-    }
-
-    public SearchPage goSearch() {
-
-        return headerComponent.goSearch();
     }
 }

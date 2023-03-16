@@ -2,6 +2,8 @@ package com.demowebshop.pages;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.SelenideElement;
+import com.demowebshop.pages.components.HeaderComponent;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -10,6 +12,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class WishlistPage {
 
+    HeaderComponent headerComponent = new HeaderComponent();
     private final ElementsCollection productList = $$(".cart-item-row .product a");
 
     public Boolean isProductInWishlist(String href) {
@@ -37,5 +40,10 @@ public class WishlistPage {
 
         String count = $x("//a[@href='" + href + "']//ancestor::td//ancestor::tr//input[@class='qty-input']").getValue();
         return Integer.parseInt(count);
+    }
+
+    public SelenideElement getWishesQuantity() {
+
+        return headerComponent.getWishesQuantity();
     }
 }

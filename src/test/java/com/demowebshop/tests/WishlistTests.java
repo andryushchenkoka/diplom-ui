@@ -1,5 +1,6 @@
 package com.demowebshop.tests;
 
+import com.codeborne.selenide.Condition;
 import com.demowebshop.helpers.CookieHelper;
 import com.demowebshop.pages.ProductPage;
 import com.demowebshop.pages.WishlistPage;
@@ -42,26 +43,22 @@ public class WishlistTests extends BaseTest {
 
         step("Проверка добавления товара в список желаний", () -> {
 
-            int wishCountOld, wishCountActual;
-
-            wishCountOld = headerComponent.getWishQuantity();
+            int wishCountOld = headerComponent.getWishQuantity();
 
             step("Добавить товар в список желаний", () -> {
                 productPage.addToWishlist();
+            });
+
+            step("Проверить, что размер списка желаний увеличился", () -> {
+                wishlistPage.getWishesQuantity().shouldHave(Condition.text((wishCountOld + 1) + ""));
             });
 
             step("Перейти на страницу списка желаний", () -> {
                 headerComponent.openWishlist();
             });
 
-            wishCountActual = headerComponent.getWishQuantity();
-
             step("Проверить, что продукт добавлен в список желаний", () -> {
                 Assertions.assertTrue(wishlistPage.isProductInWishlist(productUrl));
-            });
-
-            step("Проверить, что размер списка желаний увеличился", () -> {
-                Assertions.assertEquals(1, wishCountActual - wishCountOld);
             });
         });
     }
@@ -96,7 +93,7 @@ public class WishlistTests extends BaseTest {
 
         step("Проверка удаления товара из списка желаний", () -> {
 
-            int wishCountOld, wishCountActual, currentCount;
+            int wishCountOld, currentCount;
 
             step("Перейти на страницу списка желаний", () -> {
                 headerComponent.openWishlist();
@@ -114,14 +111,12 @@ public class WishlistTests extends BaseTest {
                 wishlistPage.updateWishlist();
             });
 
-            wishCountActual = headerComponent.getWishQuantity();
-
             step("Проверить, что продукт удален из списка желаний", () -> {
                 Assertions.assertFalse(wishlistPage.isProductInWishlist(productUrl));
             });
 
             step("Проверить, что размер списка желаний уменьшился", () -> {
-                Assertions.assertEquals(wishCountActual, wishCountOld - currentCount);
+                wishlistPage.getWishesQuantity().shouldHave(Condition.text((wishCountOld - currentCount) + ""));
             });
         });
     }

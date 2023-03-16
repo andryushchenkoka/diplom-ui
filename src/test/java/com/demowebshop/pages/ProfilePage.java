@@ -13,9 +13,9 @@ public class ProfilePage {
         return this;
     }
 
-    public String getProfileName() {
+    public void checkUsername(String username) {
 
-        return headerComponent.getUserName();
+        headerComponent.checkUsername(username);
     }
 
     public void exitProfile() {
