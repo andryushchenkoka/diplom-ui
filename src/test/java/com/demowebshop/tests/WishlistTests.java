@@ -78,9 +78,9 @@ public class WishlistTests extends BaseTest {
                     .param("addtocart_" + productId + ".EnteredQuantity", 2)
                     .when()
                     .post(ENDPOINT_CONFIG.getBaseUrl()
-                            + ENDPOINT_CONFIG.getAddWishlistPath()
+                            + "/addproducttocart/details/"
                             + productId
-                            + ENDPOINT_CONFIG.getAddWishlistOperation())
+                            + "/2")
                     .then().log().all()
                     .statusCode(200);
         });

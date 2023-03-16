@@ -35,7 +35,7 @@ public class BaseTest {
                 .formParam("Email", USER_PROFILE_CONFIG.getUserLogin())
                 .formParam("Password", USER_PROFILE_CONFIG.getUserPassword())
                 .when()
-                .post(ENDPOINT_CONFIG.getBaseUrl() + ENDPOINT_CONFIG.getLogin())
+                .post(ENDPOINT_CONFIG.getBaseUrl() + "/login")
                 .then()
                 .statusCode(302)
                 .extract().cookie("NOPCOMMERCE.AUTH");
